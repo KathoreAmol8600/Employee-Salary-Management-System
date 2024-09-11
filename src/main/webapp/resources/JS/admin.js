@@ -1,0 +1,4 @@
+function reg() {
+    alert('Hello,;;;;');
+}
+
