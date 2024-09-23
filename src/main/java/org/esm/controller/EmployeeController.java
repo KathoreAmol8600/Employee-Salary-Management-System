@@ -45,6 +45,7 @@ AdminService  adminService;
 	
 		 List<Department> list = departmentService.getAllDepartment();
 		 map.put("department",list );
+		System.out.println("amol");
 		return "Employee-registreation";
 	}
 	@RequestMapping("/employee_add")
@@ -79,17 +80,26 @@ AdminService  adminService;
 		return  "Employeeshow1";
 	}
 	
-	 @GetMapping("/delete={empId}")
-	    public String deleteEmployee(@PathVariable("empId") int empId,Map<String,List<EmployeeRegister>> map) {
-		 System.out.println(empId);
-		 boolean bret= employeeService.deleteEmployee(empId);
-		 System.out.println(bret);
-		 List<EmployeeRegister> list =employeeService.getAllEmployee();
-		 map.put("emp",list );
-	
-			return "EmployeeProfile";
+
+
+	    // ... other methods ...
+
+	    @GetMapping("/delete={empId}")
+	    public String deleteEmployee(@PathVariable("empId") int empId, Map<String, List<EmployeeRegister>> map) {
+	        System.out.println(empId);
+	        boolean bret = employeeService.deleteEmployee(empId);
+	        System.out.println(bret);
+	        List<EmployeeRegister> list = employeeService.getAllEmployee();
+	        map.put("emp", list);
+
+	        // Redirect with a success parameter
+	        return "redirect:/allEmployee?success=true";
 	    }
-	 
+
+	    // ... other methods ...
+
+	
+
 	 @RequestMapping("/employee")
 	 public String  getEmployee(EmployeeRegister employeeRegister,Map<String,List<EmployeeRegister>> map) {
 	     // method implementation
@@ -102,7 +112,10 @@ AdminService  adminService;
 	    public String editEmployee(@PathVariable("empId") int empId, Model model ) {
 	                System.out.println(empId);
 	                model.addAttribute("employee",employeeService.getEmployeeObject(empId));
-	                model.addAttribute("admin", adminService.getAdmin());
+//	                model.addAttribute("admin", adminService.getAdmin());
+	                List<Department> list = departmentService.getAllDepartment();
+	                model.addAttribute("department", list);
+	       	
 	                return "EmployeeUpdate";
 	    }
 	 
@@ -115,6 +128,12 @@ AdminService  adminService;
 			   int id = employeeRegister.getEmpId();
 			   return "redirect:/edit=/" + id;
 		}
+	 }
+	 
+	 @GetMapping("/employee-home={empId}")
+	 public String EmployeeHome(@PathVariable("empId") int empId) {
+		 System.out.println(empId);
+		 return "Employeedashbord";
 	 }
 	 
 }

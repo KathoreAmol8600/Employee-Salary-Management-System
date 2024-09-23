@@ -103,7 +103,7 @@ main {
 						Salary
 				</a></li>
 				<li class="nav-item"><a class="nav-link text-white"
-					href="leave.html"> <i class="bi bi-calendar-check"></i> Leave <span
+					href="admin_leave"> <i class="bi bi-calendar-check"></i> Leave <span
 						class="badge rounded-pill bg-danger badge-notification">5</span> <!-- Notification badge -->
 
 				</a></li>

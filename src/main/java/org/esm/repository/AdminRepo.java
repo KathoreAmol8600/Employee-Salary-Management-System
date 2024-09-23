@@ -4,8 +4,9 @@
 	import java.sql.ResultSet;
 	import java.sql.SQLException;
 	import java.util.List;
-	
-	import org.esm.model.AdminSave;
+import java.util.Map;
+
+import org.esm.model.AdminSave;
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.jdbc.core.JdbcTemplate;
 	import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -20,7 +21,7 @@
 	
 		public boolean saveAdmin(AdminSave adminSave) {
 			int ret = template.update(
-					"INSERT INTO admin (firstname, lastname, con_num, email, dateofbirth,username,password) VALUES (?, ?, ?, ?, ?,?,?)",
+					"INSERT INTO admin (firstname, lastname, con_num, email, dateofbirth,username,password) VALUES (?, ?, ?, ?, ?,?)",
 				new PreparedStatementSetter() {
 					@Override
 					public void setValues(PreparedStatement ps) throws SQLException {
@@ -29,8 +30,7 @@
 						ps.setLong(3, adminSave.getCon_num());
 						ps.setString(4, adminSave.getEmail());
 						ps.setDate(5, adminSave.getDateofbirth());
-					
-						ps.setString(7, adminSave.getPassword());
+						ps.setString(6, adminSave.getPassword());
 	
 					}
 				});
@@ -53,6 +53,7 @@
 			}
 		};
 		List<AdminSave> adminlist  = template.query("select * from admin",r);
+		System.out.println(adminlist!=null);
 		return (null != adminlist && adminlist.size() > 0) ? adminlist.get(0) : null;
 		}
 	
@@ -70,4 +71,14 @@
 	       int ret =  template.update(sql,adminSave.getPassword(),adminSave.getUsername(),adminSave.getUsername());
 	       return  ret>0?true:false;
 	    }
+
+	public String getPasswordByUsername(String username) {
+		
+		return null;
+	}
+
+//	public Map<String, Integer> SalaryRepo() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	}

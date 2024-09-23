@@ -13,13 +13,22 @@
         .form-container {
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+        }
+        .checkmark {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: green;
         }
     </style>
 </head>
 <body>
     <div class="container form-container">
         <h2 class="mb-4">Enter Attendance</h2>
-        <form action="submit_attendance.jsp" method="post">
+        <form id="attendanceForm" action="submit_attendance.jsp" method="post">
             <div class="form-group">
                 <label for="employeeSelect">Select Employee</label>
                 <select class="form-control" id="employeeSelect" name="empId" required>
@@ -50,14 +59,26 @@
                 <input type="number" class="form-control" id="hoursWorked" name="hoursWorked" step="0.01" min="0" placeholder="Enter hours worked" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-           
             <a href="view_attendance.html" class="btn btn-secondary ml-2">View Attendance</a>
         </form>
+        <div class="checkmark" id="checkmark">&#10003;</div> <!-- Checkmark Unicode -->
     </div>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var form = event.target;
+            
+            // Simulate an AJAX form submission
+            setTimeout(function() {
+                document.getElementById('checkmark').style.display = 'block';
+                form.reset(); // Optionally reset the form
+            }, 500); // Simulate network delay
+        });
+    </script>
 </body>
 </html>

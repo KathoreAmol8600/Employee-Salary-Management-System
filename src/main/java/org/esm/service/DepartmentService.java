@@ -23,6 +23,23 @@ public class DepartmentService {
 		return departmentrepo.getAllDepartment();
 	}
 
+	public boolean updateDepartment(Department department, int depId) {
+		// TODO Auto-generated method stub
+		departmentrepo.updateDepartment(department,depId);
+		return false;
+	}
+
+	public Department getDepartmentById(int depId) {
+		// TODO Auto-generated method stub
+		departmentrepo.getDepartmentById(depId);
+		return departmentrepo.getDepartmentById(depId);
+	}
+
+	public int countTotalDepartment() {
+		// TODO Auto-generated method stub
+		return departmentrepo.countTotalDepartment();
+	}
+
 	/*
 	 * public boolean updateDepartment(Department department, int depId) { // TODO
 	 * Auto-generated method stub return

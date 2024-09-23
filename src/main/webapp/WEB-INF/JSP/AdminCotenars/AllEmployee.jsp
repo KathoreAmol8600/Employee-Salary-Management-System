@@ -87,6 +87,7 @@
                             <th>Gender</th>
                             <th>Date Of Joining</th>
                             <th>Department</th>
+                            <th>Salary</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -100,6 +101,7 @@
                                 <td>${e.empGender}</td>
                                 <td>${e.empDateOfJoining}</td>
                                 <td>${e.empDepName}</td>
+                                <td>${e.basesalary}</td>
                                 <td>
                                     <!-- Edit button -->
                                     <a href="edit=${e.empId}" class="btn btn-primary btn-sm">

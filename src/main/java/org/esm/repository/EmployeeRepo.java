@@ -25,11 +25,11 @@ public class EmployeeRepo {
 				new PreparedStatementSetter() {
 					@Override
 					public void setValues(PreparedStatement ps) throws SQLException {
-						ps.setString(1, employeeRegister.getEmpName());
+						ps.setString(1, employeeRegister.getEmpName().trim());
 						ps.setString(2, employeeRegister.getEmpContact());
-						ps.setString(3, employeeRegister.getEmpEmail());
+						ps.setString(3, employeeRegister.getEmpEmail().trim());
 						ps.setString(4, employeeRegister.getEmpGender());
-						ps.setString(5,employeeRegister.getEmpAddres());
+						ps.setString(5,employeeRegister.getEmpAddres().trim());
 						ps.setDate(6,employeeRegister.getEmpDateOfJoining());
 						ps.setBigDecimal(7,employeeRegister.getBasesalary());
 						ps.setInt(8,employeeRegister.getEmpDepartmentId());
@@ -40,16 +40,37 @@ public class EmployeeRepo {
 	}
 
 	public String getPasswordByUsername(String username) {
+//		System.out.println("username"+username);
 		RowMapper<String> rowMapper = new RowMapper<String>() {
 			@Override
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
 				return rs.getString("EmpPassword");
 			}
 		};
-		String sql = "SELECT EmpPassword FROM employee emp WHERE emp.EmpEmail = ? OR emp.EmpContact = ?";
+		String sql = "SELECT EmpPassword  FROM employee emp WHERE emp.EmpEmail = ? OR emp.EmpContact = ?";
 		List<String> empList =  template.query( sql,  rowMapper, username, username);
+		System.out.println(empList.get(0));
 		return (null != empList && empList.size() > 0) ? empList.get(0) : null;
 	}
+	
+	public int getEmpIdByUsernamePassword(String username , String password) {
+		
+	    RowMapper<Integer> rowMapper = new RowMapper<Integer>() {
+	        @Override
+	        public Integer mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            return rs.getInt("empid");
+	        }
+	    };
+	    String sql = "SELECT empid FROM employee emp " +
+                "WHERE (emp.EmpEmail = ? OR emp.EmpContact = ?) AND emp.EmpPassword = ?";
+
+   // Execute the query and get the list of empids
+   List<Integer> empList = template.query(sql, rowMapper, username, username, password);
+
+   // Return the first result if available, otherwise return null
+   return (empList != null && !empList.isEmpty()) ? empList.get(0) : null;
+}
+	
 
 	public List<EmployeeRegister> getAllEmployee() {
 		RowMapper<EmployeeRegister> r = new RowMapper<EmployeeRegister>() {
@@ -66,6 +87,7 @@ public class EmployeeRepo {
 				repoemploye.setEmpDepartmentId(rs.getInt("EmpDepartmentId"));
 				repoemploye.setEmpPassword(rs.getString("EmpPassword"));
 				repoemploye.setEmpDepName(rs.getString("DepName"));
+				repoemploye.setBasesalary(rs.getBigDecimal("basesalary"));
 				return repoemploye;
 			}
 		};
@@ -96,15 +118,16 @@ public class EmployeeRepo {
 			public EmployeeRegister mapRow(ResultSet rs, int rowNum) throws SQLException {
 				EmployeeRegister repoemploye= new EmployeeRegister();
 				repoemploye.setEmpId(rs.getInt("EmpId"));
-				repoemploye.setEmpName(rs.getString("EmpName"));
-				repoemploye.setEmpContact(rs.getString("EmpContact"));
+				repoemploye.setEmpName(rs.getString("EmpName").trim());
+				repoemploye.setEmpContact(rs.getString("EmpContact").trim());
 				repoemploye.setEmpEmail(rs.getString("EmpEmail"));
 				repoemploye.setEmpGender(rs.getString("EmpGender"));
-				repoemploye.setEmpAddres(rs.getString("EmpAddres"));
+				repoemploye.setEmpAddres(rs.getString("EmpAddres").trim());
 				repoemploye.setEmpDateOfJoining(rs.getDate("EmpDateOfJoining"));	
 				repoemploye.setEmpDepartmentId(rs.getInt("EmpDepartmentId"));
 				repoemploye.setEmpPassword(rs.getString("EmpPassword"));
 				repoemploye.setEmpDepName(rs.getString("DepName"));
+				repoemploye.setBasesalary(rs.getBigDecimal("basesalary"));
 				return repoemploye;
 			}
 		};

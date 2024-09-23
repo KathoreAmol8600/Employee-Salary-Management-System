@@ -10,6 +10,7 @@ import org.esm.model.EmployeeRegister;
 import org.esm.service.AdminService;
 import org.esm.service.DepartmentService;
 import org.esm.service.EmployeeService;
+import org.esm.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,13 @@ public class AdminController {
 
 	@Autowired
 	DepartmentService  departmentService;
+
+	@Autowired
+	SalaryService salaryService;
+	
+	@Autowired
+	DepartmentService  De_Service;
+
 
 	@RequestMapping("/adminlogout")
 	public String adminLogout() {
@@ -89,6 +97,13 @@ public class AdminController {
 	public String homeAdmin(Model model) {
 		   model.addAttribute("admin", adminService.getAdmin());
 		   model.addAttribute("countemployee",employeeService.getTotalEmployee());
+		   Map<String, Integer> attendanceStatus = salaryService.getAttendanceStatusForToday();
+           model.addAttribute("presentCount", attendanceStatus.getOrDefault("present", 0));
+           model.addAttribute("absentCount", attendanceStatus.getOrDefault("absent", 0));
+           model.addAttribute("onLeaveCount", attendanceStatus.getOrDefault("leave", 0));
+		    model.addAttribute("attendanceStatus", attendanceStatus);
+		    int totalDepartmnt = De_Service.countTotalDepartment();
+		    model.addAttribute("totalDepartment", totalDepartmnt);
 		return "admindashbord1" ;
 	}
 

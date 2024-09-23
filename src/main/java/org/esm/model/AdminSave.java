@@ -12,6 +12,7 @@ public class AdminSave {
 	private String password;
 	private String username;
 	
+	
 	public String getUsername() {
 		return username;
 	}
@@ -69,4 +70,5 @@ public class AdminSave {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 }

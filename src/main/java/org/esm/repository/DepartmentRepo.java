@@ -7,9 +7,11 @@ import java.util.List;
 
 import org.esm.model.AdminSave;
 import org.esm.model.Department;
+import org.esm.model.EmployeeRegister;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -71,4 +73,43 @@ public class DepartmentRepo {
 //		return list.size()>0? list:null;
 //	}
 
+	//update department id and department name :-> update department set depname='employee',depid=7 where depid=0;
+	 public boolean updateDepartment(Department department , int depId) {
+	       String sql = "UPDATE department SET DepId = ?, DepName = ? WHERE DepId = ?";
+	       int ret =  template.update(sql,department.getDepId(),department.getDepName(),depId);
+	       return  ret>0?true:false;
+	    }
+
+
+//	public Department getDepartmentById(int depId) {
+//		// TODO Auto-generated method stub
+//		String sql = " select * from department where depid=?";
+//		
+//		
+//	}
+	
+	public  Department getDepartmentById(int depId) {
+		String query ="select * from department where depid=?";// "select * from employee where empid = ?";
+		List<Department>  department= template.query(query, this.getRowMapper(), depId);
+		return (null != department && department.size() > 0) ? department.get(0) : null;
+	}
+
+
+	private RowMapper<Department> getRowMapper() {
+		// TODO Auto-generated method stub
+		return new RowMapper<Department>() {
+			@Override
+			public Department mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Department  department= new Department();
+				department.setDepId(rs.getInt("DepId"));
+			    department.setDepName(rs.getString("DepName"));
+				
+				return department;
+			}
+		};
+		
+	}
+	 
+	//delete depname where depid - >delete from department depname where depid=7;
+	
 }

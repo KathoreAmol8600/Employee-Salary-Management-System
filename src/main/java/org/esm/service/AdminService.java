@@ -1,6 +1,7 @@
 package org.esm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.esm.model.AdminSave;
 import org.esm.repository.AdminRepo;
@@ -12,6 +13,8 @@ public class AdminService  {
 
 	@Autowired
 	AdminRepo Adminrepo ;
+
+	
 
 	public boolean isLoginAdmin(AdminSave adminSave) {
 		return Adminrepo.saveAdmin(adminSave);
@@ -41,12 +44,23 @@ public class AdminService  {
 //		} else {
 //			return "You are not registered as Admin";
 //		}
-		return "Success";
+//		return "Success";
+		if(Adminrepo.getAllAdmins().getPassword().equalsIgnoreCase(password) && Adminrepo.getAllAdmins().getEmail().equalsIgnoreCase(username)) {
+			return "Success";
+		}else {
+			return "Invailed creditials";
+		}
+	
 	}
 
 	public boolean changePassword(AdminSave adminSave) {
 		// TODO Auto-generated method stub
 		return  Adminrepo.updateAdminPassword(adminSave);
 	}
+
+//	public Map<String, Integer> getAttendanceStatusForToday() {
+//		// TODO Auto-generated method stub
+//		return Adminrepo.SalaryRepo.
+//	}
 }
 

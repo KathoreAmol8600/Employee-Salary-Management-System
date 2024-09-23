@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login / Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Include SweetAlert library -->
     <style>
         body {
             background: url('https://via.placeholder.com/1600x900') no-repeat center center fixed;
@@ -66,13 +67,8 @@
                     <label for="password" class="form-label">Password:</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
                 </div>
-                <!-- <div class="mb-3">
-                    <label for="checkPassword" class="form-label">Re-enter Password:</label>
-                    <input type="password" id="checkPassword" name="checkPassword" class="form-control" placeholder="Re-enter your password" required>
-                </div> -->
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <!-- <p id="error-message" class="error-message mt-2"></p> -->
-                <p style="color: red">${msg}</p>
+             <%--    <p style="color: red">${msg}</p> --%>
             </form>
 
             <div class="signup-option">
@@ -83,18 +79,24 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            var password = document.getElementById('password').value;
-            var checkPassword = document.getElementById('checkPassword').value;
-            var errorMessage = document.getElementById('error-message');
-
-            if (password !== checkPassword) {
-                errorMessage.textContent = "Passwords do not match!";
-                event.preventDefault(); // Prevent form submission
+        // Check if the server-side msg variable is available and show the alert
+        const msg = "${msg}"; // Replace with your server-side templating method
+        if (msg) {
+            if (msg === "Invailed creditials") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: msg,
+                });
             } else {
-                errorMessage.textContent = ""; // Clear any previous error message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: msg,
+                });
             }
-        });
+        }
     </script>
+
 </body>
 </html>

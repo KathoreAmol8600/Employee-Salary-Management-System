@@ -66,7 +66,7 @@
                     <thead>
                         <tr>
                             <th>Index</th>
-                            <th>EmpId</th>
+                            <th>Employee Name</th>
                             <th>Date</th>
                             <th>Status</th>
                             <th>HoursWorked</th>

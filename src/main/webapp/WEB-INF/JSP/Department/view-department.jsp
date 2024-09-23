@@ -143,7 +143,7 @@
                                     <td>${d.depName}</td>
                                     <td>
                                         <!-- Edit button -->
-                                        <a href="department-update=${d.depId}" class="btn btn-edit btn-sm">
+                                        <a href="department_update=${d.depId}" class="btn btn-edit btn-sm">
                                             <i class="bi bi-pencil"></i> Edit
                                         </a>
                                         <!-- Delete button -->

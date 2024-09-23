@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-           <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Table</title>
@@ -10,48 +10,47 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- SweetAlert CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    
     <style>
+        /* Your existing CSS */
         .container {
-            display: flex; /* Use flexbox for layout */
-            justify-content: space-between; /* Space out the table and form */
-            align-items: flex-start; /* Align items to the top */
-            margin-top: 30px; /* Margin at the top */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 30px;
         }
-
         .table-container {
-            flex: 1; /* Take up available space */
-            margin-right: 20px; /* Space between the table and the form */
+            flex: 1;
+            margin-right: 20px;
         }
-
         .form-container {
-            flex: 1; /* Take up available space */
+            flex: 1;
         }
-
         .table-wrapper {
-            max-height: 400px; /* Fixed height for the table wrapper */
-            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 400px;
+            overflow-y: auto;
         }
-
         #searchInput {
-            margin-bottom: 20px; /* Space below the search input */
+            margin-bottom: 20px;
         }
-
         .table td, .table th {
-            white-space: nowrap; /* Prevent text from overflowing horizontally */
-            text-overflow: ellipsis; /* Adds ellipsis for overflowed text */
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
-
         .table td {
-            word-wrap: break-word; /* Allows long words to break and wrap to the next line */
+            word-wrap: break-word;
             overflow: hidden;
         }
-
         .form-section {
-            margin-top: 30px; /* Space above the form section */
+            margin-top: 30px;
         }
     </style>
     
     <script>
+        // Your existing JavaScript functions
         function searchFunction() {
             const input = document.getElementById("searchInput");
             const filter = input.value.toLowerCase();
@@ -145,11 +144,11 @@
                     </div>
                     <div class="form-group">
                         <label for="selectDate">Select Date</label>
-                        <input type="date" class="form-control" id="selectDate"  name="Date" required>
+                        <input type="date" class="form-control" id="selectDate" name="Date" required>
                     </div>
                     <div class="form-group">
                         <label for="selectStatus">Status</label>
-                        <select class="form-control" id="selectStatus" name="Status"  required>
+                        <select class="form-control" id="selectStatus" name="Status" required>
                             <option value="present">Present</option>
                             <option value="absent">Absent</option>
                             <option value="leave">Leave</option>
@@ -161,7 +160,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" id="saveAttendanceButton" disabled>Save Attendance</button>
-                         <p style="color: blue;">${msg }</p>
+                        <p style="color: blue;">${msg }</p>
                     </div>
                 </form>
             </div>
@@ -172,5 +171,13 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Show SweetAlert if there's a success message -->
+    <script>
+        const successMsg = "${msg }"; // Assuming 'msg' is a success message set in the backend
+        if (successMsg) {
+            swal("Success!", successMsg, "success");
+        }
+    </script>
 </body>
 </html>

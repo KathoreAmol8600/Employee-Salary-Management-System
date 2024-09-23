@@ -14,7 +14,7 @@
    </style>
 </head>
 <body>
-<!-- this is navbar  -->
+
           <jsp:include page="/WEB-INF/JSP/AdminNavFooter/Adminnavbar.jsp" />
     <!-- hear going to show all employee  -->
        <div class="contenar">

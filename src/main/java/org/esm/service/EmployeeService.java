@@ -24,6 +24,7 @@ public class EmployeeService {
 	
 	public String validateEmployeeCredentials(String username,String password) {
 		String passwordFromDb = employeeRepo.getPasswordByUsername(username);
+//		System.out.println(passwordFromDb);
 		if(null != passwordFromDb) {
 			return passwordFromDb.equals(password) ? "Success" : "Invalid credentals!";
 		} else {
@@ -65,6 +66,16 @@ public class EmployeeService {
 	public int  getTotalEmployee() {
 		// TODO Auto-generated method stub
 		return employeeRepo.countTotalEmployee();
+	}
+
+	public int getempIdUsingUSernamePassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return employeeRepo.getEmpIdByUsernamePassword(username, password);
+	}
+
+	public EmployeeRegister getEmployeeById(int empid) {
+		// TODO Auto-generated method stub
+		return employeeRepo.getEmployeeById(empid);
 	}
 }
 

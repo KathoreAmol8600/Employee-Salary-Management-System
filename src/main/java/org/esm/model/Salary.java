@@ -8,11 +8,11 @@ public class Salary {
     private Integer empId; 
     private Date periodStart;
     private Date periodEnd;
-    private Integer totalDaysWorked;
     private BigDecimal totalHoursWorked;
     private Integer totalAbsentDays;
     private Integer totalPresentDays;
     private BigDecimal monthlySalary;
+    
     
 	public int getCalcId() {
 		return calcId;
@@ -37,12 +37,6 @@ public class Salary {
 	}
 	public void setPeriodEnd(Date periodEnd) {
 		this.periodEnd = periodEnd;
-	}
-	public Integer getTotalDaysWorked() {
-		return totalDaysWorked;
-	}
-	public void setTotalDaysWorked(Integer totalDaysWorked) {
-		this.totalDaysWorked = totalDaysWorked;
 	}
 	public BigDecimal getTotalHoursWorked() {
 		return totalHoursWorked;

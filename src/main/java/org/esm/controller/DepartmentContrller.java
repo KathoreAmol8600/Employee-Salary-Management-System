@@ -39,20 +39,31 @@ public class DepartmentContrller {
 	
 	@RequestMapping("/view-department")
 	public String getAllDepartment(Map<String,List<Department>> map) {
-		
 		List<Department> list = De_Service.getAllDepartment();
 		map.put("departmentre",list );
 		return  "viewDepartment";
 	}
+	
 //	department-edit=4
-//	 @GetMapping("/department-update={depId}")
-//	    public String updateEmployee(Department department,@PathVariable("depId") int depId ) {
-//		              System.out.println(depId);
-//		             boolean  status  = De_Service.updateDepartment(department ,depId);
-//		          
-//		           return "Department-update";
+	 @GetMapping("/department_update={depId}")
+	    public String getDepartmentById(Department department,@PathVariable("depId") int depId , Model model ) {
+		department   =  De_Service.getDepartmentById(depId);
+		 model.addAttribute("department",department);
+		 System.out.println(department.getDepName());
+		   return "Department-update";
+	             //   return "redirect:/view-department";
+	 }
+	 
+	 
+//	 @RequestMapping("/update")
+//	    public String updateDepartment(Department department,, Model model ) {
+//	   System.out.println("depif for bthed "+depId);
+//	   System.out.println(department.getDepId());
+////	   System.out.println(department.getDepName());
+//		return null;
 //	             //   return "redirect:/view-department";
 //	    }
+//	 
 
 
 

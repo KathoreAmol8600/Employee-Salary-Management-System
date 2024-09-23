@@ -9,114 +9,99 @@
 
 <!-- Bootstrap CSS -->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	integrity="sha384-oj9OMI3zpwrF8OBIcWJt+vL5c66Pxsz54rD5I6nRcyDA1q6F7XaoeFhK2dj8xExQ"
 	crossorigin="anonymous">
 
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-	crossorigin="anonymous"></script>
-
+<!-- Custom CSS -->
 <style>
-.navbar-brand .navbar-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-}
-.navbar-nav {
-	margin-left: 510px;
-}
-
-.nav-item {
-	padding-left: 10px;
+.navbar-brand img {
+	height: 40px;
 }
 
 .carousel-item img {
 	height: 500px;
-	object-fit: cover; 
-}
-
-#dropdownMenuButton {
-	width: 165px;
-	background: linear-gradient(to right, rgba(300, 50, 400, 0.3),
-		rgba(135, 24, 205, 0.5));
-	color: black;
-	font-size: 15px;
-	margin: 5px;
-	border-radius: 10px;
-	border-top-right-radius: 0;
-}
-
-.navbar-brand img {
-	height: 40px;
-	margin-right: 15px;
+	object-fit: cover;
 }
 
 .card-body {
 	height: 180px;
 }
-h2{
-  color: black;
+
+h2 {
+	color: #333;
 }
 
-@media ( max-width : 767.98px) {
-	.navbar-nav {
-		padding-left: 0;
-		margin: 0;
-		text-align: center;
-	}
-	.navbar-toggler {
-		margin-left: auto;
-		margin-right: auto;
-	}
-	#a {
-		margin-top: 20px;
-	}
-}
-
-@media ( min-width : 768px) {
-	.col-md-4 {
-		margin-top: 100px;
-	}
-}
-
-.custom-container {
-	padding: 0;
-}
 .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: scale(1.05);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+	background-color: #343a40;
+	color: #fff;
+	padding: 20px;
+}
+
+.carousel-caption h5 {
+	font-size: 2rem;
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	background-color: #000; /* Set background color for icons */
+}
+
+/* Testimonials Section */
+.testimonial-card {
+	border: none;
+	border-radius: 10px;
+	background-color: #f8f9fa;
+	padding: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card img {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+
+.testimonial-text {
+	font-style: italic;
+	color: #6c757d;
+}
+
+.testimonial-author {
+	font-weight: bold;
+	color: #343a40;
 }
 </style>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-
 
 <title>Home Page</title>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/JSP/navbar.jsp" />
+	<!-- Navbar -->
+	<jsp:include page="/WEB-INF/JSP/navbar.jsp" />
 
-	<div id="carouselExampleCaptions" class="carousel slide"
-		data-bs-ride="carousel">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleCaptions"
-				data-bs-slide-to="0" class="active" aria-current="true"
-				aria-label="Slide 1"></button>
-			<button type="button" data-bs-target="#carouselExampleCaptions"
-				data-bs-slide-to="1" aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#carouselExampleCaptions"
-				data-bs-slide-to="2" aria-label="Slide 3"></button>
-		</div>
+	<!-- Carousel -->
+	<div id="home" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="3000">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img src="resources/Images/pexels-stephan-seeber-1054201.jpg"
@@ -131,8 +116,7 @@ h2{
 					class="d-block w-100" alt="Second slide">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Second slide label</h5>
-					<p>Some representative placeholder content for the second
-						slide.</p>
+					<p>Some representative placeholder content for the second slide.</p>
 				</div>
 			</div>
 			<div class="carousel-item">
@@ -145,153 +129,184 @@ h2{
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button"
-			data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Previous</span>
+			data-bs-target="#home" data-bs-slide="prev">
+			<span class="carousel-control-prev" aria-hidden="true"></span> 
+			<span class="visually-hidden">Previous</span>
 		</button>
 		<button class="carousel-control-next" type="button"
-			data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Next</span>
+			data-bs-target="#home" data-bs-slide="next">
+			<span class="carousel-control-next" aria-hidden="true"></span> 
+			<span class="visually-hidden">Next</span>
 		</button>
 	</div>
-	
-<br> 
-	<div class="container md-2">
-		<div class="row" style="background-color: white;">
+
+	<!-- About Us Section -->
+	<div id="about-us" class="container my-3">
+		<div class="row bg-light p-4 rounded">
 			<div class="col-md-6">
-				<img src="resources/Images/pexels-victoria-emerson-6116312.jpg" alt="About Us" class="img-fluid">
+				<img src="resources/Images/pexels-victoria-emerson-6116312.jpg"
+					alt="About Us" class="img-fluid rounded">
 			</div>
 			<div class="col-md-6">
 				<h2>About Us</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget ipsum nulla. Vivamus lectus dui, consectetur nec porta a, 
-				vestibulum sed ipsum. Suspendisse consequat, elit sed tempus aliquet, est sapien auctor turpis, quis rutrum tellus urna ac nisi. Quisque vitae porttitor elit, nec ultrices arcu. Vestibulum metus arcu, placerat rutrum enim eu, vestibulum rutrum eros. Nam imperdiet lectus vitae tristique posuere. Etiam porttitor dolor id magna lacinia vehicula. Etiam semper ut ligula in 
-				eleifend. Sed suscipit massa id diam feugiat, at laoreet turpis posuere. Duis dapibus ante justo.</p>
+				<p>At ESMSyste, we are dedicated to revolutionizing employee
+					salary management with cutting-edge technology and innovative
+					solutions. Our mission is to transform payroll management by
+					simplifying complex processes, ensuring precise calculations, and
+					maintaining rigorous compliance with regulatory standards. We
+					empower businesses to concentrate on their core activities while we
+					handle the intricacies of payroll management. Our system is
+					designed with a user-centric approach, featuring intuitive
+					navigation and robust functionalities that streamline salary
+					computations, tax withholdings, and detailed reporting. Supported
+					by a passionate team of software developers and HR professionals,
+					we are committed to delivering reliable, efficient, and tailored
+					solutions that meet the unique needs of every organization. At
+					ESMSyste,</p>
 			</div>
 		</div>
 	</div>
 
-<div class="container my-3">
-	<div class="row text-center">
-		<!-- Card 1 --> 
-		<div class="col-md-4">
-	
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-md-6">
-					<img src="resources/Images/pexels-arunodhai-v-568948.jpg"
-					class="d-block w-100" alt="First slide">
-					</div>
-					<div class="col-md-6">
-						<div class="card-body">
-							<h5 class="card-title">Feature 1</h5>
-							<p class="card-text">Description of the first feature Nunc viverra dignissim finibus. Praesent eu justo in lectus ornare egestas eu sed massa. .</p>
+	<!-- Features Section -->
+	<div id="features" class="container my-3">
+		<h2 class="text-center mb-4">Features</h2>
+		<div class="row text-center">
+			<!-- Card 1 -->
+			<div class="col-md-4 mb-4">
+				<div class="card">
+					<div class="row g-0">
+						<div class="col-md-6">
+							<img src="resources/Images/pexels-rdne-8292798.jpg"
+								class="d-block w-100" alt="Feature 1">
+						</div>
+						<div class="col-md-6">
+							<div class="card-body">
+								<h6 class="card-title">Automated Salary Calculations</h6>
+								<p class="card-text">Our system automates complex salary
+									calculations, including base pay, overtime, bonuses, and
+									deductions.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Card 2 -->
-		<div class="col-md-4 mb-4">
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-md-6">
-					<img src="resources/Images/pexels-arunodhai-v-568948.jpg" class="d-block w-100" alt="First slide">
-					</div>
-					<div class="col-md-6">
-						<div class="card-body">
-							<h5 class="card-title">Feature 2</h5>
-							<p class="card-text">Description of the secondNunc viverra dignissim finibus. Praesent eu justo in lectus ornare egestas eu sed massa.  feature.</p>
+			<!-- Card 2 -->
+			<div class="col-md-4 mb-4">
+				<div class="card">
+					<div class="row g-0">
+						<div class="col-md-6">
+							<img
+								src="resources/Images/pexels-polina-tankilevitch-6927342.jpg"
+								class="d-block w-100" alt="Feature 2">
+						</div>
+						<div class="col-md-6">
+							<div class="card-body">
+								<h6 class="card-title">Comprehensive Tax Management</h6>
+								<p class="card-text">Manage all your tax-related needs with
+									our comprehensive solution, ensuring compliance and accuracy.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Card 3 -->
-		<div class="col-md-4 mb-4">
-			<div class="card">
-				<div class="row g-0">
-					<div class="col-md-6">
-					<img src="resources/Images/pexels-arunodhai-v-568948.jpg"	class="d-block w-100" alt="First slide">
-					</div>
-					<div class="col-md-6">
-						<div class="card-body">
-							<h5 class="card-title">Feature 3</h5>
-							<p class="card-text">Description of the third Nunc viverra dignissim finibus. Praesent eu justo in lectus ornare egestas eu sed massa.  feature.</p>
+			<!-- Card 3 -->
+			<div class="col-md-4 mb-4">
+				<div class="card">
+					<div class="row g-0">
+						<div class="col-md-6">
+							<img src="resources/Images/pexels-jakubzerdzicki-20232363.jpg"
+								class="d-block w-100" alt="Feature 3">
+						</div>
+						<div class="col-md-6">
+							<div class="card-body">
+								<h6 class="card-title">Customizable Reporting and Analytics</h6>
+								<p class="card-text">Generate customized reports and gain
+									insights with our advanced analytics tools.</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-	<br><br>
-	<div class="container my-3" >
+
+	<!-- Testimonials Section -->
+	<div id="testimonials" class="container my-5">
 		<h2 class="text-center mb-4">What Our Clients Say</h2>
-		<div id="testimonialsCarousel" class="carousel slide "  data-bs-ride="carousel">
-			<div class="carousel-inner" >
-				<div class="carousel-item active" >
-					<div class="card mb-4"  style="background-color: orange">
-						<div class="card-body text-center">
-							<p class="card-text">"Amazing service! I highly recommend them."</p>
-							<footer class="blockquote-footer">Customer Name</footer>
-						</div>
-					</div>
+		<div id="testimonials-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+			<div class="carousel-inner">
+				<!-- Testimonial 1 -->
+				<div class="carousel-item active text-center">
+					<img src="resources/Images/pexels-cottonbro-4125671.jpg" class="rounded-circle mb-3"
+						alt="Client 1"
+						style="width: 80px; height: 80px; object-fit: cover;">
+						<p class="testimonial-author">Client 1</p>
+					<p class="testimonial-text">"Fantastic service! Highly recommend."</p>
 				</div>
-				<div class="carousel-item">
-					<div class="card mb-4" style="background-color: orange">
-						<div class="card-body text-center">
-							<p class="card-text">"Exceptional quality and support."</p>
-							<footer class="blockquote-footer">Customer Name</footer>
-						</div>
-					</div>
+				<!-- Testimonial 2 -->
+				<div class="carousel-item text-center">
+					<img src="resources/Images/pexels-amirsaeiddehghan-13110361.jpg" class="rounded-circle mb-3"
+						alt="Client 2"
+						style="width: 80px; height: 80px; object-fit: cover;">
+								<p class="testimonial-author">Client 2</p>
+					<p class="testimonial-text">"Very professional and reliable."</p>
 				</div>
-				<div class="carousel-item">
-					<div class="card mb-4 " style="background-color: orange	">
-						<div class="card-body text-center">
-							<p class="card-text">"I couldn't be happier with the results."</p>
-							<footer class="blockquote-footer">Customer Name</footer>
-						</div>
-					</div>
+				<!-- Testimonial 3 -->
+				<div class="carousel-item text-center">
+					<img src="resources/Images/pexels-lucaspezeta-2878735.jpg" class="rounded-circle mb-3"
+						alt="Client 3"
+						style="width: 80px; height: 80px; object-fit: cover;">
+											<p class="testimonial-author">Client 3</p>
+						
+					<p class="testimonial-text">"Great experience from start to finish."</p>
 				</div>
 			</div>
-			<a class="carousel-control-prev" href="#testimonialsCarousel" role="button" data-bs-slide="prev">
+			<button class="carousel-control-prev" type="button"
+				data-bs-target="#testimonials-carousel" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Previous</span>
-			</a>
-			<a class="carousel-control-next" href="#testimonialsCarousel" role="button" data-bs-slide="next">
+			</button>
+			<button class="carousel-control-next" type="button"
+				data-bs-target="#testimonials-carousel" data-bs-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="visually-hidden">Next</span>
-			</a>
+			</button>
 		</div>
 	</div>
 
-	<div class="container my-3">
+	<!-- Contact Us Section -->
+	<div id="contact-us" class="container my-5">
 		<h2 class="text-center mb-4">Contact Us</h2>
-		<form>
+		<form action="/contact" method="post">
 			<div class="row">
 				<div class="col-md-6 mb-3">
 					<label for="name" class="form-label">Name</label>
-					<input type="text" class="form-control" id="name" placeholder="Your Name">
+					<input type="text" class="form-control" id="name" name="name" required>
 				</div>
 				<div class="col-md-6 mb-3">
 					<label for="email" class="form-label">Email</label>
-					<input type="email" class="form-control" id="email" placeholder="Your Email">
+					<input type="email" class="form-control" id="email" name="email" required>
+				</div>
+				<div class="col-12 mb-3">
+					<label for="message" class="form-label">Message</label>
+					<textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+				</div>
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary">Send Message</button>
 				</div>
 			</div>
-			<div class="mb-3">
-				<label for="message" class="form-label">Message</label>
-				<textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
-			</div>
-			<button type="submit" class="btn btn-primary">Send Message</button>
 		</form>
 	</div>
 
-    <jsp:include page="/WEB-INF/JSP/footer.jsp" />
+	<!-- Footer -->
+	<footer class="footer text-center">
+		<p>&copy; 2024 Company Name. All rights reserved.</p>
+	</footer>
 
+	<!-- Bootstrap JS Bundle -->
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-s3E3qZFLVxXX8pOckDAkEFxO1Sokq9GeUzPpzn6B3g1y4ACr2KrQ5i5lV0cX47ho"
 		crossorigin="anonymous"></script>
 </body>
 </html>
